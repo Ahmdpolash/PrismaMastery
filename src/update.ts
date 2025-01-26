@@ -14,6 +14,14 @@ const main = async () => {
     },
     data: { published: true },
   });
+    
+    
+      // update data using upsert
+  const upsertData = await prisma.post.upsert({
+    where: { id: 11 },
+    update: { authorName: "Polash" },
+    create: { title: "New Post", content: "New Content" },
+  });
 
   console.log(updateMany);
 };

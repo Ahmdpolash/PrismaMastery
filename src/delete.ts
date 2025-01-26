@@ -12,14 +12,9 @@ const main = async () => {
   //   const multipleDelete = await prisma.post.deleteMany();
 
     
-    // update data using upsert
-  const upsertData = await prisma.post.upsert({
-    where: { id: 11 },
-    update: { authorName: "Polash" },
-    create: { title: "New Post", content: "New Content" },
-  });
+  
 
-  console.log(upsertData);
+//   console.log(upsertData);
 };
 
 main();
