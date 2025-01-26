@@ -7,27 +7,27 @@ const main = async () => {
 
   const getAllPost = await prisma.post.findMany();
 
-    
-    //find first and firstFirstOrThrowError
+  //find first and firstFirstOrThrowError
 
-    const findPost = await prisma.post.findFirstOrThrow({
-        where: {
-            // id: 5
-            published:false
-        }
-    })
-    
+  // const findPost = await prisma.post.findFirstOrThrow({
+  //     where: {
+  //         // id: 5
+  //         published:false
+  //     }
+  // })
 
-    //find unique 
-    const findUnique = await prisma.post.findUnique({
-        where: {
-        id: 5
-    }
-})
+  //find unique
+  const findUnique = await prisma.post.findUnique({
+    where: {
+      id: 15,
+    },
+    select: {
+      title: true,
+      content: true,
+    },
+  });
 
-
-    console.log(findUnique);
-    
+  console.log(findUnique);
 };
 
 main();
