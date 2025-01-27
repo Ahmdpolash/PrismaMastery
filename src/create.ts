@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 const main = async () => {
   // const createUser = await prisma.user.create({
   //   data: {
-  //     username: "polash ahmed",
-  //     email: "polash@example.com",
+  //     username: "polash ahmed 2",
+  //     email: "polash@exampe.com",
   //     role: UserRole.user,
   //   },
   // });
@@ -24,27 +24,29 @@ const main = async () => {
   //   },
   // });
 
-
   const createPost = await prisma.post.create({
     data: {
-      title: 'this is title',
-      content: 'this is content',
-      authorId: 1,
+      title: "this is title 5",
+      content: "this is content 5",
+      authorId: 3,
       postCategory: {
-        create: {
-          categoryId:1
-          // category: {
-          //   connect: {
-          //     id: 1,
-          //   },
-          // }
-        }
-      }
+        create: [
+          {
+            categoryId: 1,
+          },
+          {
+            categoryId: 3,
+          },
+          {
+            categoryId: 4,
+          },
+        ],
+      },
     },
     include: {
-      postCategory:true
-    }
-  })
+      postCategory: true,
+    },
+  });
 
   console.log(createPost);
 };
