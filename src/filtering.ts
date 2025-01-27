@@ -63,21 +63,21 @@ const filtering = async () => {
   const inDepthData = await prisma.user.findUnique({
     where: {
       id: 3,
+    },
+    include: {
+      post: {
+        include: {
+          postCategory: {
+            include: {
+              category: true,
+            },
+          },
+        },
       },
-      include: {
-          post: {
-              include: {
-                  postCategory: {
-                      include: {
-                          category:true
-                      }
-                  }
-              }
-          }
-      }
+    },
   });
 
-  console.dir(inDepthData,{depth:Infinity});
+  console.dir(inDepthData, { depth: Infinity });
 };
 
 filtering();
