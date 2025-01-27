@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Post {
-  id         Int      @id @default(autoincrement())
-  title      String
-  content    String
-  published  Boolean  @default(false)
-  authorName String?
-  authorId   Int
-  author     User     @relation(fields: [authorId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id           Int            @id @default(autoincrement())
+  title        String
+  content      String
+  published    Boolean        @default(false)
+  authorName   String?
+  authorId     Int
+  author       User           @relation(fields: [authorId], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  postCategory postCategory[]
 
   @@map("posts")
 }
@@ -25,7 +26,7 @@ model User {
   id       Int      @id @default(autoincrement())
   username String   @unique
   email    String   @unique
-  role     UserRole
+  role     UserRole @default(user)
   profile  Profile? // one to one relation
   post     Post[] // one to many relations
 
@@ -43,19 +44,31 @@ model Profile {
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
-  name String
+  id           Int            @id @default(autoincrement())
+  name         String
+  postCategory postCategory[]
 
   @@map("categories")
 }
 
-enum UserRole {
+model postCategory {
+  postId Int
+  post   Post @relation(fields: [postId], references: [id])
+
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([postId, categoryId])
+  @@map("post_categories")
+}
+
+enum UserRole { 
   user
   admin
 }
 
-model practice {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String
-}
+// model practice {
+//   id    Int    @id @default(autoincrement())
+//   name  String
+//   email String
+// }
