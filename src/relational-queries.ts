@@ -11,10 +11,10 @@ const relationalQuery = async () => {
   //   .post();
 
   //conclude api
-  // const result2 = await prisma.user.findUnique({
-  //   where: { id: 1 },
-  //   include: { post: true },
-  // });
+  const result = await prisma.user.findUnique({
+    where: { id: 1 },
+    include: { post: true },
+  });
 
   // relational queries
 
@@ -25,8 +25,9 @@ const relationalQuery = async () => {
       },
     },
   });
+console.log(result)
 
-  console.dir(publishedPosts, { depth: Infinity });
+  //console.dir(publishedPosts, { depth: Infinity });
 };
 
 relationalQuery();

@@ -23,7 +23,7 @@ const main = async () => {
     create: { title: "New Post", content: "New Content" },
   });
 
-  console.log(updateMany);
+
 };
 
 main();
