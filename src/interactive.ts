@@ -36,7 +36,10 @@ const interactiveTransaction = async () => {
       updateUser,
     };
   });
-  console.log(result);
+    console.log(result);
+    
+
+
 };
 
 interactiveTransaction();
