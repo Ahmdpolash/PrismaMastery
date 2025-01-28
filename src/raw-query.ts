@@ -11,3 +11,7 @@ const rawQuery = async () => {
 };
 
 rawQuery();
+
+
+
+//npx prisma validate
