@@ -25,9 +25,9 @@ const relationalQuery = async () => {
       },
     },
   });
-console.log(result)
+  console.log(result);
 
-  //console.dir(publishedPosts, { depth: Infinity });
+  console.dir(publishedPosts, { depth: Infinity });
 };
 
 relationalQuery();
